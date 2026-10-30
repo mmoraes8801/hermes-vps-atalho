@@ -15,3 +15,11 @@ echo '<chave>' | ssh agatha@187.127.8.203 'cat >> ~/.ssh/authorized_keys'
 ```
 
 Nenhum segredo fica neste repositório: a chave privada é gerada no próprio notebook.
+
+## Atalho War Room (dashboard de marketing)
+
+Mesmo esquema, abre `http://localhost:18765` (porta 8765 da VPS). Reaproveita a chave do Hermes, então quem já instalou o Hermes não precisa autorizar nada:
+
+```powershell
+irm https://raw.githubusercontent.com/mmoraes8801/hermes-vps-atalho/main/warroom.ps1 | iex
+```
