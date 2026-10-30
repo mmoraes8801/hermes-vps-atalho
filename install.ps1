@@ -16,7 +16,8 @@ $key = Join-Path $sshDir 'hermes_vps'
 New-Item -ItemType Directory -Force $sshDir | Out-Null
 if (-not (Test-Path $key)) {
     # Chave sem senha: o atalho precisa abrir sem perguntar nada
-    & ssh-keygen.exe -q -t ed25519 -N '""' -C "$env:USERNAME-hermes" -f $key
+    # linha de comando crua: -N '""' quebra no PowerShell 7.3+ (passa as aspas literais)
+    Start-Process ssh-keygen.exe -NoNewWindow -Wait -ArgumentList "-q -t ed25519 -N `"`" -C $env:USERNAME-hermes -f `"$key`""
 }
 
 $appDir = Join-Path $env:LOCALAPPDATA 'HermesVPS'
